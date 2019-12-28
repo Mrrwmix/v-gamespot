@@ -1,14 +1,14 @@
 <template>
   <div>
     <comp-header />
-    <div>Content</div>
+    <router-view />
     <comp-footer />
   </div>
 </template>
 
 <script>
-import compHeader from "./components/Header-footer/Header";
-import compFooter from "./components/Header-footer/Footer";
+import compHeader from './components/Header-footer/Header';
+import compFooter from './components/Header-footer/Footer';
 
 export default {
   components: {
@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style>
-@import "./assets/style.css";
+@import './assets/style.css';
 </style>
