@@ -2,6 +2,13 @@
   <div class="dashboard_form">
     <h1>Add posts</h1>
     <form @submit.prevent="submitHandler">
+      <div v-if="imageUpload">
+        <img :src="imageUpload" />
+      </div>
+      <div class="input_field">
+        <input type="file" @change="processFile($event)" ref="myFileInput" />
+      </div>
+
       <div class="input_field" :class="{ invalid: $v.formdata.title.$error }">
         <label>Title</label>
         <input
@@ -77,6 +84,7 @@ export default {
     return {
       dialog: false,
       formdata: {
+        img: '',
         title: '',
         desc: '',
         content: '',
@@ -122,12 +130,22 @@ export default {
     },
     clearPost() {
       this.$v.$reset();
+      this.$refs.myFileInput.value = '';
       this.formdata = {
+        img: '',
         title: '',
         desc: '',
         content: '',
         rating: ''
       };
+    },
+    processFile(e) {
+      let file = e.target.files[0];
+
+      this.$store.dispatch('admin/imageUpload', file);
+    },
+    changeImage(url) {
+      this.formdata.img = url;
     }
   },
   computed: {
@@ -135,10 +153,19 @@ export default {
       let status = this.$store.getters['admin/addPostStatus'];
       if (status) {
         this.clearPost();
+        this.$store.commit('admin/clearImageUpload');
       }
 
       return status;
+    },
+    imageUpload() {
+      let imageUrl = this.$store.getters['admin/imageUpload'];
+      this.changeImage(imageUrl);
+      return imageUrl;
     }
+  },
+  destroyed() {
+    this.$store.commit('admin/clearImageUpload');
   }
 };
 </script>
