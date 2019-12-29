@@ -13,7 +13,9 @@ import {
   MdCard,
   MdContent,
   MdButton,
-  MdDialog
+  MdDialog,
+  MdTable,
+  MdDialogConfirm
 } from 'vue-material/dist/components';
 import 'vue-material/dist/vue-material.min.css';
 
@@ -23,6 +25,8 @@ Vue.use(MdCard);
 Vue.use(MdContent);
 Vue.use(MdButton);
 Vue.use(MdDialog);
+Vue.use(MdTable);
+Vue.use(MdDialogConfirm);
 
 Vue.use(VueResource);
 Vue.http.options.root = 'https://v-gamespot.firebaseio.com/';
