@@ -6,18 +6,29 @@ import store from './Store/store';
 
 import vuelidate from 'vuelidate';
 
+import wysiwyg from 'vue-wysiwyg';
+
 import Button from './components/UI/Button.vue';
-import { MdCard } from 'vue-material/dist/components';
+import {
+  MdCard,
+  MdContent,
+  MdButton,
+  MdDialog
+} from 'vue-material/dist/components';
 import 'vue-material/dist/vue-material.min.css';
 
 Vue.component('app-button', Button);
 
 Vue.use(MdCard);
+Vue.use(MdContent);
+Vue.use(MdButton);
+Vue.use(MdDialog);
 
 Vue.use(VueResource);
-Vue.http.options.root = '';
+Vue.http.options.root = 'https://v-gamespot.firebaseio.com/';
 
 Vue.use(vuelidate);
+Vue.use(wysiwyg, {});
 
 new Vue({
   router,
