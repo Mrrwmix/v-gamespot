@@ -1,6 +1,5 @@
 <template>
   <div>
-    Home
     <comp-featured />
     <comp-content />
   </div>

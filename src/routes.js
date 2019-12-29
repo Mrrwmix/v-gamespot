@@ -65,6 +65,7 @@ const routes = [
 
 export default new VueRouter({
   mode: 'history',
+  base: '/v-gamespot/',
   routes,
   scrollBehavior() {
     return { x: 0, y: 0 };
